@@ -8,15 +8,18 @@
                         PoLLi-RPG
                     </h1>
                 </div>
-                <div class="login-form">
+
+                <form class="login-form">
                     <input type="text" class="form form-login" placeholder="Type username" v-model="username" />
                     <input type="email" class="form form-login" placeholder="Type email" v-model="email" />
                     <input type="password" class="form form-login" placeholder="Type password" v-model="password" />
                     <div class="login-buttons">
-                        <button class="btn btn-block btn-primary btn-login" @click="register">Register</button>
+                        <button type="submit" class="btn btn-block btn-primary btn-login" @click="register">
+                            Register
+                        </button>
                         <nuxt-link to="/" class="btn btn-link btn-register">Allready have an Account?</nuxt-link>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>
@@ -57,7 +60,7 @@ export default {
                     console.log('ERROR');
                     console.log(err);
 
-                    swal('Error!', `${err.response}`, 'error');
+                    swal('Error!', `${err}`, 'error');
                 });
         }
     }

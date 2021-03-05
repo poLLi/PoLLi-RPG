@@ -8,14 +8,15 @@
                         PoLLi-RPG
                     </h1>
                 </div>
-                <div class="login-form">
+
+                <form class="login-form">
                     <input type="email" class="form form-login" placeholder="Type email" v-model="email" />
                     <input type="password" class="form form-login" placeholder="Type password" v-model="password" />
                     <div class="login-buttons">
-                        <button class="btn btn-block btn-primary btn-login" @click="login">Login</button>
+                        <button type="submit" class="btn btn-block btn-primary btn-login" @click="login">Login</button>
                         <nuxt-link to="/register" class="btn btn-link btn-register">Dont have an Account?</nuxt-link>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>

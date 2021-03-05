@@ -12,9 +12,6 @@ export default {
             Cookie.remove('auth');
             this.$store.commit('auth/setAuth', null);
             this.$router.push('/');
-        },
-        soon() {
-            swal('Coming Soon!', 'Stop clicking around everywhere you fuck! God damn im working on it...', 'error');
         }
     }
 };
