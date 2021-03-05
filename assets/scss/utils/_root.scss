@@ -1,0 +1,24 @@
+//
+// ======================== //
+// ==      PoLLi-RPG     == //
+// ======================== //
+//
+
+:root {
+    font-size: $font-size-root;
+
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
+
+    @each $color, $value in $colors {
+        --#{$color}: #{$value};
+    }
+
+    @each $color, $value in $theme-colors {
+        --#{$color}: #{$value};
+    }
+
+    --font-sans-serif: #{inspect($font-family-sans-serif)};
+    --font-monospace: #{inspect($font-family-monospace)};
+}

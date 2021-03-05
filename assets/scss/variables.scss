@@ -1,0 +1,105 @@
+//
+// ======================== //
+// ==      PoLLi-RPG     == //
+// ======================== //
+//
+
+// color-variables
+$orange: #ff5733 !default;
+$blue: #33a9ff !default;
+$green: #33ff91 !default;
+$purple: #8133ff !default;
+$red: #ff3333 !default;
+$yellow: #fff733 !default;
+
+// colors-map
+$colors: (
+    'orange': $orange,
+    'blue': $blue,
+    'green': $green,
+    'purple': $purple,
+    'red': $red,
+    'yellow': $yellow
+) !default;
+
+// theme-color-variables
+$primary: $orange !default;
+$secondary: #3d3d3d !default;
+$success: $green !default;
+$info: $blue !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: #e4e6eb !default;
+$dark: #121212 !default;
+$gray: #626262 !default;
+$dark-gray: #212121 !default;
+$light-gray: #e4e6eb !default;
+
+// theme-colors-map
+$theme-colors: (
+    'primary': $primary,
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'danger': $danger,
+    'light': $light,
+    'dark': $dark,
+    'gray': $gray,
+    'dark-gray': $dark-gray,
+    'light-gray': $light-gray
+) !default;
+
+// -----------------------------------------------------------------------------
+// Body
+$body-bg: $dark !default;
+$body-color: $light-gray !default;
+
+// -----------------------------------------------------------------------------
+// Links
+$link-color: $body-color !default;
+$link-decoration: none !default;
+$link-hover-color: $primary !default;
+$link-hover-decoration: underline !default;
+
+// -----------------------------------------------------------------------------
+// Font
+$font-family-sans-serif: 'Poppins', sans-serif !default;
+$font-family-monospace: monospace !default;
+
+$font-size-root: null !default;
+$font-size-base: 1rem !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+
+$font-weight-lighter: 100 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$line-height-base: 1.5 !default;
+$line-height-sm: 1.25 !default;
+$line-height-lg: 2 !default;
+
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size
+) !default;
+
+// -----------------------------------------------------------------------------
+// Transition and Animations
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+$transition-collapse: height 0.35s ease !default;

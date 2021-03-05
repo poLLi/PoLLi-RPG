@@ -4,16 +4,17 @@
             <div class="login-screen">
                 <div class="title">
                     <h1>
-                        <span class="light">Sign in</span>
+                        <span class="light">Sign up</span>
                         PoLLi-RPG
                     </h1>
                 </div>
                 <div class="login-form">
+                    <input type="text" class="form form-login" placeholder="Type username" v-model="username" />
                     <input type="email" class="form form-login" placeholder="Type email" v-model="email" />
                     <input type="password" class="form form-login" placeholder="Type password" v-model="password" />
                     <div class="login-buttons">
-                        <button class="btn btn-block btn-primary btn-login" @click="login">Login</button>
-                        <nuxt-link to="/register" class="btn btn-link btn-register">Dont have an Account?</nuxt-link>
+                        <button class="btn btn-block btn-primary btn-login" @click="register">Register</button>
+                        <nuxt-link to="/" class="btn btn-link btn-register">Allready have an Account?</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -22,43 +23,41 @@
 </template>
 
 <script>
-const Cookie = process.client ? require('js-cookie') : undefined;
-
 export default {
     layout: 'auth',
     middleware: 'notAuthenticated',
 
     data() {
         return {
+            username: '',
             email: '',
             password: ''
         };
     },
 
     methods: {
-        login(event) {
+        register(event) {
             event.preventDefault();
 
             let user = {
-                identifier: this.email,
+                username: this.username,
+                email: this.email,
                 password: this.password
             };
 
             this.$axios
-                .$post('/auth/local', user)
+                .$post('/auth/local/register', user)
                 .then((res) => {
-                    console.log(res);
+                    if (response == null) return;
 
-                    this.$store.commit('auth/setAuth', res.jwt);
-                    Cookie.set('auth', res.jwt, { expires: 15 });
-
-                    this.$router.push('/dashboard');
+                    console.log('Well done!');
+                    this.$router.push('/index');
                 })
                 .catch((err) => {
                     console.log('ERROR');
                     console.log(err);
 
-                    swal('Error!', `${err}`, 'error');
+                    swal('Error!', `${err.response}`, 'error');
                 });
         }
     }

@@ -1,11 +1,19 @@
 <template>
-    <Nuxt />
+    <div id="app">
+        <app-Header />
+        <Nuxt />
+    </div>
 </template>
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined;
+import appHeader from '@/components/default/header';
 
 export default {
+    components: {
+        appHeader
+    },
+
     middleware: ['authenticated'],
 
     created: function () {

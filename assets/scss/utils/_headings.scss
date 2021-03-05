@@ -1,0 +1,33 @@
+%heading {
+    margin-top: 0; // 1
+}
+
+h1 {
+    @extend %heading;
+    font-size: $h1-font-size;
+}
+
+h2 {
+    @extend %heading;
+    font-size: $h2-font-size;
+}
+
+h3 {
+    @extend %heading;
+    font-size: $h3-font-size;
+}
+
+h4 {
+    @extend %heading;
+    font-size: $h4-font-size;
+}
+
+h5 {
+    @extend %heading;
+    font-size: $h5-font-size;
+}
+
+h6 {
+    @extend %heading;
+    font-size: $h6-font-size;
+}

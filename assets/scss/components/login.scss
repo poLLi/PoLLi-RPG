@@ -1,0 +1,60 @@
+//
+// ======================== //
+// ==      PoLLi-RPG     == //
+// ======================== //
+//
+
+.login-flex {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        margin-right: 20px;
+        text-align: right;
+        flex: 1;
+
+        h1 {
+            margin: 0;
+            font-size: 4rem;
+        }
+
+        .light {
+            font-weight: $font-weight-lighter;
+            display: block;
+        }
+    }
+
+    .login-form {
+        width: 530px;
+        background-color: $secondary;
+        border-radius: 2rem;
+        padding: 2rem;
+
+        .form-login {
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-buttons {
+            display: flex;
+            margin: 2rem 0 0 0;
+
+            .btn-login {
+                flex: 1;
+            }
+
+            .btn-register {
+                flex: 1;
+                color: shade($body-color, 25%);
+            }
+        }
+    }
+}

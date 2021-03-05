@@ -1,9 +1,19 @@
 <template>
-    <nuxt />
+    <div id="app">
+        <app-Header />
+        <Nuxt />
+    </div>
 </template>
 
 <script>
+const Cookie = process.client ? require('js-cookie') : undefined;
+import appHeader from '@/components/auth/header';
+
 export default {
+    components: {
+        appHeader
+    },
+
     created: function () {
         var vm = this;
         this.$axios.interceptors.response.use(

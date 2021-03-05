@@ -1,0 +1,38 @@
+//
+// ======================== //
+// ==      PoLLi-RPG     == //
+// ======================== //
+//
+
+.form {
+    display: block;
+    width: 100%;
+    padding: 0.325rem 0.75rem;
+    box-sizing: border-box;
+    font-weight: $font-weight-light;
+    line-height: $line-height-base;
+    color: $body-color;
+    background-color: $dark-gray;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 1rem;
+    appearance: none;
+
+    &[type='file'] {
+        overflow: hidden;
+
+        &:not(:disabled):not([readonly]) {
+            cursor: pointer;
+        }
+    }
+
+    &:focus {
+        border: none;
+        outline: 0;
+    }
+
+    &::placeholder {
+        color: $gray;
+        opacity: 1;
+    }
+}
