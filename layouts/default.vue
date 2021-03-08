@@ -7,7 +7,7 @@
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined;
-import appHeader from '@/components/default/header';
+import appHeader from '@/components/auth/header';
 
 export default {
     components: {

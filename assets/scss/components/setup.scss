@@ -1,0 +1,119 @@
+//
+// ======================== //
+// ==      PoLLi-RPG     == //
+// ======================== //
+//
+
+.setup-flex {
+    width: 400px;
+    height: 80vh;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.setup-steps {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+
+    .setup-step {
+        text-transform: uppercase;
+        width: 33.33%;
+        float: left;
+        position: relative;
+        font-size: 12px;
+
+        &:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 30px;
+            line-height: 30px;
+            display: block;
+            font-size: 1rem;
+            color: $gray;
+            background: $secondary;
+            border-radius: 6px;
+            margin: 0 auto 10px auto;
+        }
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: $secondary;
+            position: absolute;
+            left: -50%;
+            top: 15px;
+            z-index: -1;
+        }
+
+        &:first-child:after {
+            content: none;
+        }
+
+        &.active:before,
+        &.active:after {
+            background: $primary;
+            color: $body-color;
+        }
+    }
+}
+
+.setup-form {
+    width: 100%;
+
+    #setup fieldset {
+        background-color: $secondary;
+        border: 0 none;
+        border-radius: 1rem;
+        padding: 20px 30px;
+
+        /*stacking fieldsets above each other*/
+        position: relative;
+
+        &:not(:first-of-type) {
+            display: none;
+        }
+
+        input.form-setup {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.setup-title {
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: $primary;
+    margin-bottom: 0;
+}
+
+.setup-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: $gray;
+    margin-bottom: 2rem;
+}
+
+.setup-info {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.setup-button {
+    margin-top: 2rem;
+}
+
+.setup-button-back {
+    margin-top: 0.5rem;
+}

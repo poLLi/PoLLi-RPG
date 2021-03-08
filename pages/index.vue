@@ -53,7 +53,7 @@ export default {
                     this.$store.commit('auth/setAuth', res.jwt);
                     Cookie.set('auth', res.jwt, { expires: 15 });
 
-                    this.$router.push('/dashboard');
+                    this.$router.push('/game');
                 })
                 .catch((err) => {
                     console.log('ERROR');
