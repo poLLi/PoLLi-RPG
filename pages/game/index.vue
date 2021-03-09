@@ -7,11 +7,29 @@
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined;
 export default {
-    middleware: 'authenticated',
-
     data() {
         return {
-            loading: true
+            loading: true,
+            user: {
+                id: '',
+                username: ''
+            },
+            character: {
+                id: '',
+                birthday: '',
+                weight: '',
+                height: '',
+                spirit: '',
+                endurance: '',
+                inteligence: '',
+                health: '',
+                stamina: '',
+                power: '',
+                attack: '',
+                defense: '',
+                level: '',
+                experience: ''
+            }
         };
     },
 

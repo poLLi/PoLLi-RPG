@@ -7,21 +7,35 @@
 //
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-
-// Functions &Variables
-@import 'functions';
 @import 'variables';
 
-// Browser Reset
-@import 'vendor/normalize';
+// Import bulma styles
+@import '~bulma';
 
-// Import Utils
-@import 'utils/root';
-@import 'utils/headings';
-@import 'utils/forms';
-@import 'utils/buttons';
+// Import buefy styles
+@import '~buefy/src/scss/buefy';
 
-// Compontents
-@import 'components/theme';
-@import 'components/login';
-@import 'components/setup';
+// // Functions &Variables
+// @import 'functions';
+//
+
+// // Browser Reset
+// @import 'vendor/normalize';
+
+// // Import Utils
+// @import 'utils/root';
+// @import 'utils/headings';
+// @import 'utils/forms';
+// @import 'utils/buttons';
+
+// // Compontents
+// @import 'components/theme';
+// @import 'components/login';
+// @import 'components/setup';
+
+.navbar-brand a:first-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

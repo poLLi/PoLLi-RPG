@@ -1,13 +1,13 @@
 <template>
     <div id="app">
-        <app-Header />
+        <app-Header :loggedIn="false" />
         <Nuxt />
     </div>
 </template>
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined;
-import appHeader from '@/components/auth/header';
+import appHeader from '@/components/header';
 
 export default {
     components: {

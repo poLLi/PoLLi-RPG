@@ -1,0 +1,167 @@
+<template>
+    <div>
+        <div v-if="!loggedIn">
+            <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="false">
+                <template #brand>
+                    <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                        <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
+                    </b-navbar-item>
+                </template>
+            </b-navbar>
+        </div>
+        <div v-if="loggedIn">
+            <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="burger" :close-on-click="closeClick">
+                <template #brand>
+                    <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                        <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
+                    </b-navbar-item>
+                </template>
+                <template #burger>
+                    <a class="navbar-burger" aria-label="menu" aria-expanded="false" @click="open = true">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </template>
+            </b-navbar>
+            <b-sidebar
+                type="is-dark"
+                :fullheight="fullheight"
+                :fullwidth="fullwidth"
+                :overlay="overlay"
+                :right="right"
+                :can-cancel="cancel"
+                v-model="open"
+            >
+                <div class="p-1">
+                    <img src="~/assets/images/Logo.svg" alt="Lightweight UI components for Vue.js based on Bulma" />
+                    <b-menu>
+                        <b-menu-list label="Menu">
+                            <b-menu-item
+                                icon="information-outline"
+                                label="Info"
+                                @click="pushRoute('/register')"
+                            ></b-menu-item>
+                            <b-menu-item icon="settings">
+                                <template #label="props">
+                                    Administrator
+                                    <b-icon
+                                        class="is-pulled-right"
+                                        :icon="props.expanded ? 'menu-down' : 'menu-up'"
+                                    ></b-icon>
+                                </template>
+                                <b-menu-item icon="account" label="Users"></b-menu-item>
+                                <b-menu-item icon="cellphone-link">
+                                    <template #label>
+                                        Devices
+                                        <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
+                                            <template #trigger>
+                                                <b-icon icon="dots-vertical"></b-icon>
+                                            </template>
+                                            <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
+                                            <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
+                                            <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
+                                        </b-dropdown>
+                                    </template>
+                                </b-menu-item>
+                                <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
+                            </b-menu-item>
+                            <b-menu-item icon="account" label="My Account">
+                                <b-menu-item label="Account data"></b-menu-item>
+                                <b-menu-item label="Addresses"></b-menu-item>
+                            </b-menu-item>
+                        </b-menu-list>
+                        <b-menu-list>
+                            <b-menu-item
+                                label="Expo"
+                                icon="link"
+                                tag="router-link"
+                                target="_blank"
+                                to="/expo"
+                            ></b-menu-item>
+                        </b-menu-list>
+                        <b-menu-list label="Actions">
+                            <b-menu-item label="Logout"></b-menu-item>
+                        </b-menu-list>
+                    </b-menu>
+                </div>
+            </b-sidebar>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    props: ['loggedIn'],
+    data() {
+        return {
+            burger: true,
+            fixedTop: true,
+            closeClick: true,
+            open: false,
+            overlay: true,
+            fullheight: true,
+            fullwidth: false,
+            right: false,
+            cancel: ['escape', 'outside']
+        };
+    },
+
+    mounted() {
+        let vm = this;
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, false);
+        var xDown = null;
+        var yDown = null;
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        }
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+            var xUp = evt.touches[0].clientX;
+            var yUp = evt.touches[0].clientY;
+            var xDiff = xDown - xUp;
+            var yDiff = yDown - yUp;
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                /*most significant*/
+                if (xDiff > 0) {
+                    /* left swipe */
+                    console.log('left swipe');
+                    vm.open = false;
+                } else {
+                    /* right swipe */
+                    console.log('right swipe');
+                    vm.open = true;
+                }
+            } else {
+                if (yDiff > 0) {
+                    /* up swipe */
+                    console.log('up swipe');
+                } else {
+                    /* down swipe */
+                    console.log('down swipe');
+                }
+            }
+            /* reset values */
+            xDown = null;
+            yDown = null;
+        }
+    },
+
+    methods: {
+        pushRoute(route) {
+            this.open = false;
+            this.$router.push(route);
+        }
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+.p-1 {
+    padding: 1em !important;
+}
+</style>
