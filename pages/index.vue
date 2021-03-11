@@ -20,7 +20,7 @@
                     ></b-input>
                 </b-field>
                 <div class="buttons">
-                    <b-button type="submit is-primary" @click="login" rounded expanded>Login</b-button>
+                    <b-button native-type="submit" type="is-primary" @click="login" rounded expanded>Login</b-button>
                     <nuxt-link to="/register" class="has-text-grey-light is-size-7 mt-3"
                         >Dont have an Account?</nuxt-link
                     >

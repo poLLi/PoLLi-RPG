@@ -23,7 +23,7 @@
                     ></b-input>
                 </b-field>
                 <div class="buttons">
-                    <b-button type="submit is-primary" @click="register" rounded expanded>Login</b-button>
+                    <b-button native-type="submit" type="is-primary" @click="register" rounded expanded>Login</b-button>
                     <nuxt-link to="/login" class="has-text-grey-light is-size-7 mt-3"
                         >Allready have an Account?</nuxt-link
                     >
@@ -59,7 +59,7 @@ export default {
             this.$axios
                 .$post('/auth/local/register', user)
                 .then((res) => {
-                    if (response == null) return;
+                    if (res == null) return;
 
                     console.log('Well done!');
                     this.$router.push('/index');

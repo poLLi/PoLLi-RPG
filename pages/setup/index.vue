@@ -1,99 +1,130 @@
 <template>
-    <main>
-        <div class="setup-flex">
-            <div class="setup-steps">
-                <div class="setup-step active">Info</div>
-                <div class="setup-step">Birthday</div>
-                <div class="setup-step">Stats</div>
-                <div class="setup-step">Finish</div>
-            </div>
-            <div class="setup-form">
-                <form id="setup">
-                    <fieldset>
-                        <h2 class="setup-title">Setup your Character</h2>
-                        <h3 class="setup-subtitle">Important Information</h3>
-                        <p class="setup-info">
-                            In order for this to "Game" to work you have to be truthfully to yourself.
-                        </p>
-                        <p class="setup-info">
-                            You can input whatever numbers you want but keep in mind that you only lie to yourself!
-                        </p>
-                        <input
-                            type="button"
-                            name="next"
-                            class="btn btn-block btn-primary setup-button"
-                            value="Next"
-                            @click="next_FS"
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="setup-title">Birthday</h2>
-                        <h3 class="setup-subtitle">When where you born?</h3>
-                        <input type="date" v-model="birthday" placeholder="Birthday Date" class="form form-setup" />
-                        <input
-                            type="button"
-                            name="next"
-                            class="btn btn-block btn-primary setup-button"
-                            value="Next"
-                            @click="next_FS"
-                        />
-                        <input
-                            type="button"
-                            name="previous"
-                            class="btn btn-dark setup-button-back"
-                            value="Previous"
-                            @click="previous_FS"
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="setup-title">Stats</h2>
-                        <h3 class="setup-subtitle">Your "Character" Statistics</h3>
-                        <input type="number" v-model="weight" placeholder="Weight" class="form form-setup" />
-                        <input type="number" v-model="height" placeholder="Height" class="form form-setup" />
-                        <input type="number" v-model="spirit" placeholder="Spirit" class="form form-setup" />
-                        <input type="number" v-model="endurance" placeholder="Endurance" class="form form-setup" />
-                        <input type="number" v-model="inteligence" placeholder="Inteligence" class="form form-setup" />
-                        <input
-                            type="button"
-                            name="next"
-                            class="btn btn-block btn-primary setup-button"
-                            value="Next"
-                            @click="next_FS"
-                        />
-                        <input
-                            type="button"
-                            name="previous"
-                            class="btn btn-dark setup-button-back"
-                            value="Previous"
-                            @click="previous_FS"
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <h2 class="setup-title">Finish</h2>
-                        <h3 class="setup-subtitle">Thats all for now!</h3>
-                        <p class="setup-info">We are setting up your Character in just a second.</p>
-                        <input
-                            type="submit"
-                            class="btn btn-block btn-primary setup-button"
-                            value="Done"
-                            @click="submit"
-                        />
-                        <input
-                            type="button"
-                            name="previous"
-                            class="btn btn-dark setup-button-back"
-                            value="Previous"
-                            @click="previous_FS"
-                        />
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </main>
+    <section class="section section-setup">
+        <form>
+            <b-steps
+                v-model="activeStep"
+                :animated="isAnimated"
+                :rounded="isRounded"
+                :icon-prev="prevIcon"
+                :icon-next="nextIcon"
+                :label-position="labelPosition"
+                :mobile-mode="mobileMode"
+            >
+                <b-step-item step="1" :clickable="isStepsClickable">
+                    <h1 class="title has-text-centered mt-4 mb-5">Setup your Character</h1>
+                    <div class="box">
+                        <p class="mb-5">In order for this to "Game" to work you have to be truthfully to yourself.</p>
+                        <p>You can input whatever numbers you want but keep in mind that you only lie to yourself!</p>
+                    </div>
+                </b-step-item>
+
+                <b-step-item step="2" :clickable="isStepsClickable">
+                    <h1 class="title has-text-centered mt-4 mb-5">Age</h1>
+                    <div class="box">
+                        <b-field class="my-4">
+                            <b-input
+                                placeholder="Birthday"
+                                v-model="birthday"
+                                type="date"
+                                icon="calendar-today"
+                                rounded
+                            />
+                        </b-field>
+                    </div>
+                </b-step-item>
+
+                <b-step-item step="3" :clickable="isStepsClickable">
+                    <h1 class="title has-text-centered mt-4 mb-5">Stats</h1>
+                    <div class="box">
+                        <b-field class="mb-4">
+                            <b-input
+                                placeholder="Weight"
+                                v-model="weight"
+                                type="decimal"
+                                icon="weight-kilogram"
+                                rounded
+                            />
+                        </b-field>
+                        <b-field class="mb-4">
+                            <b-input
+                                placeholder="Height"
+                                v-model="height"
+                                type="decimal"
+                                icon="arrow-expand-up"
+                                rounded
+                            />
+                        </b-field>
+                        <b-field class="mb-4">
+                            <b-input
+                                placeholder="Spirit"
+                                v-model="spirit"
+                                type="number"
+                                icon="head-snowflake-outline"
+                                rounded
+                            />
+                        </b-field>
+                        <b-field class="mb-4">
+                            <b-input
+                                placeholder="Endurance"
+                                v-model="endurance"
+                                type="number"
+                                icon="run-fast"
+                                rounded
+                            />
+                        </b-field>
+                        <b-field class="mb-4">
+                            <b-input
+                                placeholder="Inteligence"
+                                v-model="inteligence"
+                                type="number"
+                                icon="brain"
+                                rounded
+                            />
+                        </b-field>
+                    </div>
+                </b-step-item>
+
+                <b-step-item step="4" :clickable="isStepsClickable">
+                    <h1 class="title has-text-centered mt-4 mb-5">Finish</h1>
+                    <div class="box">
+                        <p class="has-text-centered mt-4">Thanks for you honesty!</p>
+                        <b-button type="is-primary mt-5 mb-5" @click="submit" rounded expanded
+                            >Create your Character now!</b-button
+                        >
+                    </div>
+                </b-step-item>
+
+                <template v-if="customNavigation" #navigation="{ previous, next }">
+                    <div class="buttons is-justify-content-center mt-5">
+                        <b-button
+                            outlined
+                            type="is-dark"
+                            icon-left="arrow-left"
+                            :disabled="previous.disabled"
+                            @click.prevent="previous.action"
+                        >
+                            Previous
+                        </b-button>
+                        <b-button
+                            outlined
+                            native-type="submit"
+                            type="is-primary"
+                            icon-right="arrow-right"
+                            :disabled="next.disabled"
+                            @click.prevent="next.action"
+                        >
+                            Next
+                        </b-button>
+                    </div>
+                </template>
+            </b-steps>
+        </form>
+    </section>
 </template>
 
 <script>
 export default {
+    layout: 'setup',
     data() {
         return {
             birthday: '',
@@ -102,7 +133,19 @@ export default {
             spirit: '',
             endurance: '',
             inteligence: '',
-            user: null
+            user: null,
+
+            activeStep: 0,
+
+            isAnimated: true,
+            isRounded: true,
+            isStepsClickable: true,
+            customNavigation: true,
+
+            prevIcon: 'arrow-left',
+            nextIcon: 'arrow-right',
+            labelPosition: 'bottom',
+            mobileMode: 'minimalist'
         };
     },
 
@@ -115,14 +158,12 @@ export default {
             })
             .catch((err) => {
                 console.log(err);
+
+                swal('Error!', `${err}`, 'error');
             });
     },
 
     methods: {
-        getNodeindex(elm) {
-            return [...elm.parentNode.children].findIndex((c) => c == elm);
-        },
-
         submit(event) {
             event.preventDefault();
 
@@ -151,32 +192,22 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err);
+
+                    swal('Error!', `${err}`, 'error');
                 });
-        },
-
-        next_FS(event) {
-            let current_fs = event.target.offsetParent;
-            let next_fs = event.target.offsetParent.nextElementSibling;
-
-            let next_step = document.querySelectorAll('.setup-step')[this.getNodeindex(next_fs)];
-
-            next_step.classList.add('active');
-
-            current_fs.style.display = 'none';
-            next_fs.style.display = 'block';
-        },
-
-        previous_FS(event) {
-            let current_fs = event.target.offsetParent;
-            let previous_fs = event.target.offsetParent.previousElementSibling;
-
-            let prev_step = document.querySelectorAll('.setup-step')[this.getNodeindex(current_fs)];
-
-            prev_step.classList.remove('active');
-
-            current_fs.style.display = 'none';
-            previous_fs.style.display = 'block';
         }
     }
 };
 </script>
+
+<style lang="scss">
+.section-setup {
+    padding-top: 2rem;
+}
+@media screen and (max-width: 768px) {
+    .b-steps:not(.is-vertical) .steps.mobile-minimalist .step-items .step-item::before,
+    .b-steps:not(.is-vertical) .steps.mobile-minimalist .step-items .step-item::after {
+        width: 40% !important;
+    }
+}
+</style>
