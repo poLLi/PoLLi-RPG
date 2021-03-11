@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+    <section class="section mt-6">
         <h1 class="title is-1 title-login mb-6">
             <span class="subtitle is-1 subtitle-login">Sign up</span>
             PoLLi-RPG

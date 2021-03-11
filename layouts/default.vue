@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <app-Header :loggedIn="true" />
         <Nuxt />
+        <app-Header :loggedIn="true" />
     </div>
 </template>
 

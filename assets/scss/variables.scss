@@ -31,6 +31,14 @@ $body-color: #e4e6eb;
 $body-family: $family-primary;
 
 // // -----------------------------------------------------------------------------
+// // Navbar
+$navbar-height: 4.5rem;
+
+// // -----------------------------------------------------------------------------
+// // Layout
+$section-padding: 2rem 1.5rem;
+
+// // -----------------------------------------------------------------------------
 // // Links
 $link: $primary;
 $link-invert: $primary-invert;
@@ -40,6 +48,8 @@ $link-focus-border: $primary;
 // // Form
 $input-background-color: #121212;
 $input-border-color: #212121;
+
+$progress-bar-background-color: #212121;
 
 // // -----------------------------------------------------------------------------
 // // Transition and Animations

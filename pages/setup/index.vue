@@ -21,7 +21,7 @@
                 <b-step-item step="2" :clickable="isStepsClickable">
                     <h1 class="title has-text-centered mt-4 mb-5">Age</h1>
                     <div class="box">
-                        <b-field class="my-4">
+                        <b-field class="mt-4 mb-2">
                             <b-input
                                 placeholder="Birthday"
                                 v-model="birthday"
@@ -29,6 +29,9 @@
                                 icon="calendar-today"
                                 rounded
                             />
+                        </b-field>
+                        <b-field class="mt-2 mb-4">
+                            <b-input placeholder="Gender" v-model="gender" type="text" icon="account" rounded />
                         </b-field>
                     </div>
                 </b-step-item>
@@ -49,7 +52,7 @@
                             <b-input
                                 placeholder="Height"
                                 v-model="height"
-                                type="decimal"
+                                type="number"
                                 icon="arrow-expand-up"
                                 rounded
                             />
@@ -128,6 +131,7 @@ export default {
     data() {
         return {
             birthday: '',
+            gender: '',
             weight: '',
             height: '',
             spirit: '',
@@ -169,6 +173,7 @@ export default {
 
             let character = {
                 birthday: this.birthday,
+                gender: this.gender,
                 weight: this.weight,
                 spirit: this.spirit,
                 endurance: this.endurance,
@@ -202,7 +207,7 @@ export default {
 
 <style lang="scss">
 .section-setup {
-    padding-top: 2rem;
+    padding-top: 3rem;
 }
 @media screen and (max-width: 768px) {
     .b-steps:not(.is-vertical) .steps.mobile-minimalist .step-items .step-item::before,

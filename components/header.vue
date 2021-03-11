@@ -1,89 +1,80 @@
 <template>
-    <div>
-        <div v-if="!loggedIn">
-            <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="false">
-                <template #brand>
-                    <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
-                        <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
-                    </b-navbar-item>
-                </template>
-            </b-navbar>
-        </div>
-        <div v-if="loggedIn">
-            <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="burger" :close-on-click="closeClick">
-                <template #brand>
-                    <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
-                        <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
-                    </b-navbar-item>
-                </template>
-                <template #burger>
-                    <a class="navbar-burger" aria-label="menu" aria-expanded="false" @click="open = true">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </template>
-            </b-navbar>
-            <b-sidebar
-                type="is-dark"
-                :fullheight="fullheight"
-                :fullwidth="fullwidth"
-                :overlay="overlay"
-                :right="right"
-                :can-cancel="cancel"
-                v-model="open"
-            >
-                <div class="p-1">
+    <div v-if="loggedIn">
+        <b-navbar :fixed-bottom="fixedBottom" type="is-black" :mobile-burger="burger" :close-on-click="closeClick">
+            <template #brand>
+                <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
                     <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
-                    <b-menu>
-                        <b-menu-list label="Menu">
-                            <b-menu-item
-                                icon="information-outline"
-                                label="Character"
-                                @click="pushRoute('/register')"
-                            ></b-menu-item>
-                            <b-menu-item icon="settings">
-                                <template #label="props">
-                                    Administrator
-                                    <b-icon
-                                        class="is-pulled-right"
-                                        :icon="props.expanded ? 'menu-down' : 'menu-up'"
-                                    ></b-icon>
-                                </template>
-                                <b-menu-item icon="account" label="Users"></b-menu-item>
-                                <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
-                            </b-menu-item>
-                            <b-menu-item icon="account" label="My Account">
-                                <b-menu-item label="Account data"></b-menu-item>
-                                <b-menu-item label="Addresses"></b-menu-item>
-                            </b-menu-item>
-                        </b-menu-list>
-                        <b-menu-list>
-                            <b-menu-item
-                                label="Expo"
-                                icon="link"
-                                tag="router-link"
-                                target="_blank"
-                                to="/expo"
-                            ></b-menu-item>
-                        </b-menu-list>
-                        <b-menu-list label="Actions">
-                            <b-menu-item label="Logout"></b-menu-item>
-                        </b-menu-list>
-                    </b-menu>
-                </div>
-            </b-sidebar>
-        </div>
+                </b-navbar-item>
+            </template>
+            <template #burger>
+                <a class="navbar-burger" aria-label="menu" aria-expanded="false" @click="open = true">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </template>
+        </b-navbar>
+        <b-sidebar
+            type="is-dark"
+            :fullheight="fullheight"
+            :fullwidth="fullwidth"
+            :overlay="overlay"
+            :right="right"
+            :can-cancel="cancel"
+            v-model="open"
+        >
+            <div class="p-1">
+                <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
+                <b-menu>
+                    <b-menu-list label="Menu">
+                        <b-menu-item
+                            icon="information-outline"
+                            label="Character"
+                            @click="pushRoute('/register')"
+                        ></b-menu-item>
+                        <b-menu-item icon="settings">
+                            <template #label="props">
+                                Administrator
+                                <b-icon
+                                    class="is-pulled-right"
+                                    :icon="props.expanded ? 'menu-down' : 'menu-up'"
+                                ></b-icon>
+                            </template>
+                            <b-menu-item icon="account" label="Users"></b-menu-item>
+                            <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
+                        </b-menu-item>
+                        <b-menu-item icon="account" label="My Account">
+                            <b-menu-item label="Account data"></b-menu-item>
+                            <b-menu-item label="Addresses"></b-menu-item>
+                        </b-menu-item>
+                    </b-menu-list>
+                    <b-menu-list>
+                        <b-menu-item
+                            label="Expo"
+                            icon="link"
+                            tag="router-link"
+                            target="_blank"
+                            to="/expo"
+                        ></b-menu-item>
+                    </b-menu-list>
+                    <b-menu-list label="Actions">
+                        <b-menu-item @click="logout" label="Logout"></b-menu-item>
+                    </b-menu-list>
+                </b-menu>
+            </div>
+        </b-sidebar>
     </div>
 </template>
 
 <script>
+const Cookie = process.client ? require('js-cookie') : undefined;
 export default {
     props: ['loggedIn'],
     data() {
         return {
             burger: true,
             fixedTop: true,
+            fixedBottom: true,
             closeClick: true,
             open: false,
             overlay: true,
@@ -142,6 +133,12 @@ export default {
         pushRoute(route) {
             this.open = false;
             this.$router.push(route);
+        },
+
+        logout() {
+            Cookie.remove('auth');
+            this.$store.commit('auth/setAuth', null);
+            this.$router.push('/');
         }
     }
 };

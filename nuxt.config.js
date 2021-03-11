@@ -32,6 +32,12 @@ export default {
     },
 
     pwa: {
+        meta: {
+            mobileAppIOS: true,
+            appleStatusBarStyle: 'black-translucent',
+            theme_color: '#121212',
+            nativeUI: true
+        },
         manifest: {
             name: 'PoLLi-RPG',
             lang: 'en'
