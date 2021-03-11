@@ -11,7 +11,12 @@ $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
 
-$scheme-main: #121212;
+$red: hsl(0, 100%, 63%);
+
+$text: #e4e6eb;
+$text-strong: #e4e6eb;
+
+$scheme-main: #3d3d3d;
 
 // // -----------------------------------------------------------------------------
 // // Fonts
@@ -21,7 +26,7 @@ $family-secondary: $family-sans-serif;
 
 // // -----------------------------------------------------------------------------
 // // Body
-$body-background-color: $scheme-main;
+$body-background-color: #121212;
 $body-color: #e4e6eb;
 $body-family: $family-primary;
 
@@ -32,53 +37,12 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 // // -----------------------------------------------------------------------------
+// // Form
+$input-background-color: #121212;
+$input-border-color: #212121;
+
+// // -----------------------------------------------------------------------------
 // // Transition and Animations
 $transition-base: all 0.2s ease-in-out;
 $transition-fade: opacity 0.15s linear;
 $transition-collapse: height 0.35s ease;
-
-// // color-variables
-// $orange: #ff5733 !default;
-// $blue: #33a9ff !default;
-// $green: #33ff91 !default;
-// $purple: #8133ff !default;
-// $red: #ff3333 !default;
-// $yellow: #fff733 !default;
-
-// // colors-map
-// $colors: (
-//     'orange': $orange,
-//     'blue': $blue,
-//     'green': $green,
-//     'purple': $purple,
-//     'red': $red,
-//     'yellow': $yellow
-// ) !default;
-
-// // theme-color-variables
-// $primary: $orange !default;
-// $secondary: #3d3d3d !default;
-// $success: $green !default;
-// $info: $blue !default;
-// $warning: $yellow !default;
-// $danger: $red !default;
-// $light: #e4e6eb !default;
-// $dark: #121212 !default;
-// $gray: #626262 !default;
-// $dark-gray: #212121 !default;
-// $light-gray: #e4e6eb !default;
-
-// // theme-colors-map
-// $theme-colors: (
-//     'primary': $primary,
-//     'secondary': $secondary,
-//     'success': $success,
-//     'info': $info,
-//     'warning': $warning,
-//     'danger': $danger,
-//     'light': $light,
-//     'dark': $dark,
-//     'gray': $gray,
-//     'dark-gray': $dark-gray,
-//     'light-gray': $light-gray
-// ) !default;

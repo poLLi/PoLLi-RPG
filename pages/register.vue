@@ -1,28 +1,36 @@
 <template>
-    <main>
-        <div class="login-flex">
-            <div class="login-screen">
-                <div class="title">
-                    <h1>
-                        <span class="light">Sign up</span>
-                        PoLLi-RPG
-                    </h1>
+    <section class="section">
+        <h1 class="title is-1 title-login mb-6">
+            <span class="subtitle is-1 subtitle-login">Sign up</span>
+            PoLLi-RPG
+        </h1>
+        <div class="box py-5">
+            <form class="login-form">
+                <b-field class="mb-4">
+                    <b-input placeholder="Username" v-model="username" type="text" icon="account" rounded> </b-input>
+                </b-field>
+                <b-field class="mb-4">
+                    <b-input placeholder="Email" v-model="email" type="email" icon="email" rounded> </b-input>
+                </b-field>
+                <b-field class="mb-4">
+                    <b-input
+                        placeholder="Password"
+                        v-model="password"
+                        type="password"
+                        icon="key"
+                        rounded
+                        password-reveal
+                    ></b-input>
+                </b-field>
+                <div class="buttons">
+                    <b-button type="submit is-primary" @click="register" rounded expanded>Login</b-button>
+                    <nuxt-link to="/login" class="has-text-grey-light is-size-7 mt-3"
+                        >Allready have an Account?</nuxt-link
+                    >
                 </div>
-
-                <form class="login-form">
-                    <input type="text" class="form form-login" placeholder="Type username" v-model="username" />
-                    <input type="email" class="form form-login" placeholder="Type email" v-model="email" />
-                    <input type="password" class="form form-login" placeholder="Type password" v-model="password" />
-                    <div class="login-buttons">
-                        <button type="submit" class="btn btn-block btn-primary btn-login" @click="register">
-                            Register
-                        </button>
-                        <nuxt-link to="/" class="btn btn-link btn-register">Allready have an Account?</nuxt-link>
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
-    </main>
+    </section>
 </template>
 
 <script>
@@ -66,3 +74,17 @@ export default {
     }
 };
 </script>
+
+<style lang="scss" scoped>
+.title-login {
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.subtitle-login {
+    font-weight: 200;
+    display: block;
+}
+</style>

@@ -3,7 +3,7 @@
         <div v-if="!loggedIn">
             <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="false">
                 <template #brand>
-                    <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                    <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
                         <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
                     </b-navbar-item>
                 </template>
@@ -12,7 +12,7 @@
         <div v-if="loggedIn">
             <b-navbar :fixed-top="fixedTop" type="is-black" :mobile-burger="burger" :close-on-click="closeClick">
                 <template #brand>
-                    <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                    <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
                         <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
                     </b-navbar-item>
                 </template>
@@ -34,12 +34,12 @@
                 v-model="open"
             >
                 <div class="p-1">
-                    <img src="~/assets/images/Logo.svg" alt="Lightweight UI components for Vue.js based on Bulma" />
+                    <img src="~/assets/images/Logo.svg" alt="Life-RPG Logo" />
                     <b-menu>
                         <b-menu-list label="Menu">
                             <b-menu-item
                                 icon="information-outline"
-                                label="Info"
+                                label="Character"
                                 @click="pushRoute('/register')"
                             ></b-menu-item>
                             <b-menu-item icon="settings">
@@ -51,19 +51,6 @@
                                     ></b-icon>
                                 </template>
                                 <b-menu-item icon="account" label="Users"></b-menu-item>
-                                <b-menu-item icon="cellphone-link">
-                                    <template #label>
-                                        Devices
-                                        <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
-                                            <template #trigger>
-                                                <b-icon icon="dots-vertical"></b-icon>
-                                            </template>
-                                            <b-dropdown-item aria-role="listitem">Action</b-dropdown-item>
-                                            <b-dropdown-item aria-role="listitem">Another action</b-dropdown-item>
-                                            <b-dropdown-item aria-role="listitem">Something else</b-dropdown-item>
-                                        </b-dropdown>
-                                    </template>
-                                </b-menu-item>
                                 <b-menu-item icon="cash-multiple" label="Payments" disabled></b-menu-item>
                             </b-menu-item>
                             <b-menu-item icon="account" label="My Account">

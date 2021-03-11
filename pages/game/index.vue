@@ -1,7 +1,8 @@
 <template>
-    <main>
+    <section class="section">
+        <h2 class="title is-3 has-text-grey">"Just start <b-icon icon="rocket" size="is-large" />"</h2>
         <button class="btn btn-primary" @click="logout">logout</button>
-    </main>
+    </section>
 </template>
 
 <script>
